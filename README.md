@@ -4,7 +4,7 @@ Repositorio en el cual voy a ir subiendo trabajos de dicha materia.
 
 ## Profesor 👨‍🏫
 
-- Cersosimo vicente
+- Cersosimo Vicente
 
 ## Alumna 👩🏻‍💼
 
