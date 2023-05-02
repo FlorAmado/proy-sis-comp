@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package alumno;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author info7
- */
 public class interfazAlumno extends javax.swing.JFrame {
 
     /**
@@ -205,11 +197,14 @@ public class interfazAlumno extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        
-        Alumno a1 = new Alumno("1","2","3","4","5","6","7","8","9","10");
+//     1er CREAR LOS OBJ ALUMNOS  
+       // Alumno a1 = new Alumno("1","2","3","4","5","6","7","8","9","10"); // no dinamico
+       
+       Alumno a1 = new Alumno(txtNombre.getText(),)// dinamico
         
        // System.out.println(a1.toString());
         
+//     2DO CREAR UNA LISTA Y AGREGAR LOS OBJETOS ALUMNOS
         List<Alumno> lista = new ArrayList<>();
         
         lista.add(a1);
@@ -217,6 +212,13 @@ public class interfazAlumno extends javax.swing.JFrame {
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i));
         }
+
+//        3er REAR UN ARRAY DE LOS OBJETOS
+
+    Object[] objFila1 = {lista.get(0).getMatricula(), lista.get(0).getDNI(), lista.get(0).getNombre(),lista.get(0).getApellido(), lista.get(0).getDireccion(), lista.get(0).getEmail(), lista.get(0).getTelefono(), lista.get(0).getAno(), lista.get(0).getCurso(), lista.get(0).getEspecialidad()};
+       
+//        4to AGREGAR LAS FILAS AL MODELO     
+    modelo.addRow(objFila1);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
