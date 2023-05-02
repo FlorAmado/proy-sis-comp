@@ -1,0 +1,3 @@
+run:
+Alumno{matricula=1, nombre=2, apellido=3, dni=4, direccion=5, email=6, telefono=7, a�o=8, curso=9, especialidad=10}
+BUILD SUCCESSFUL (total time: 31 seconds)
