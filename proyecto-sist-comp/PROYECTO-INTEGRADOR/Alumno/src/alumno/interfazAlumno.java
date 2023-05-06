@@ -20,6 +20,26 @@ public class interfazAlumno extends javax.swing.JFrame {
         initComponents();
         modelo = new DefaultTableModel(columnNames, filas);
         tabla.setModel(modelo);
+        
+        Alumno a2 = new Alumno("3022","46646195","Florencia","Amado","Lanus","amadoflorencia8@gmail.com","1158371338","7","3","Informatica");
+        Alumno a3 = new Alumno("4023","46757296","Valentino","Cybulka","Lanus","valentinocybulka@gmail.com","1158312348","7","3","Informatica");
+        Alumno a4 = new Alumno("5132","46858397","Santino","Testa","Lanus","santinotesta@gmail.com","1158098765","7","3","Informatica");
+        Alumno a5 = new Alumno("5133","46098765","Borrable","Test","Lanus","test@gmail.com","1158879876","7","3","Informatica");
+
+        
+        lista.add(a2);
+        lista.add(a3);
+        lista.add(a4);
+        lista.add(a5);
+        
+
+         modelo.setRowCount(0);
+        for (int i = 0; i < lista.size(); i++) {
+            //System.out.println(lista.get(i));    
+            Object[] objFila = {lista.get(i).getMatricula(), lista.get(i).getDni(), lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getDireccion(), lista.get(i).getEmail(), lista.get(i).getTelefono(), lista.get(i).getAno(), lista.get(i).getCurso(), lista.get(i).getEspecialidad()};
+            modelo.addRow(objFila);
+            
+        }
     }
 
     /**
