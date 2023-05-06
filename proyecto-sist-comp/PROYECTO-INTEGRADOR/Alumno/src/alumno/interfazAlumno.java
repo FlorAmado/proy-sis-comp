@@ -10,7 +10,7 @@ public class interfazAlumno extends javax.swing.JFrame {
     
     DefaultTableModel modelo; 
     String[] columnNames = {"Matricula", "DNI", "Nombre", "Apellido","Direccion", "Email", "Telefono", "Año", "Curso", "Especialidad"};
-    int filas = 0;    
+    int fila = 0;    
     List<Alumno> lista = new ArrayList<>();
 
 //* Creates new form interfazAlumno
@@ -18,7 +18,7 @@ public class interfazAlumno extends javax.swing.JFrame {
     
     public interfazAlumno() {
         initComponents();
-        modelo = new DefaultTableModel(columnNames, filas);
+        modelo = new DefaultTableModel(columnNames, fila);
         tabla.setModel(modelo);
         
         Alumno a2 = new Alumno("3022","46646195","Florencia","Amado","Lanus","amadoflorencia8@gmail.com","1158371338","7","3","Informatica");
@@ -72,6 +72,7 @@ public class interfazAlumno extends javax.swing.JFrame {
         btnAceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        cmdBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,7 +112,19 @@ public class interfazAlumno extends javax.swing.JFrame {
             }
         ));
         tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla);
+
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,6 +135,8 @@ public class interfazAlumno extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(219, 219, 219)
                         .addComponent(btnAceptar)
+                        .addGap(34, 34, 34)
+                        .addComponent(cmdBorrar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -214,7 +229,9 @@ public class interfazAlumno extends javax.swing.JFrame {
                             .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptar)
+                    .addComponent(cmdBorrar))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -222,7 +239,6 @@ public class interfazAlumno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
         
 //     1er CREAR LOS OBJ ALUMNOS  
        // Alumno a1 = new Alumno("1","2","3","4","5","6","7","8","9","10"); // no dinamico
@@ -253,14 +269,27 @@ public class interfazAlumno extends javax.swing.JFrame {
             
         }
         
-        
-
-
-
-    
-        
-   
+      
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+       modelo.removeRow(fila);
+       lista.remove(fila);
+       
+       modelo.setRowCount(0);
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));    
+            Object[] objFila = {lista.get(i).getMatricula(), lista.get(i).getDni(), lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getDireccion(), lista.get(i).getEmail(), lista.get(i).getTelefono(), lista.get(i).getAno(), lista.get(i).getCurso(), lista.get(i).getEspecialidad()};
+            modelo.addRow(objFila);
+            
+        }
+       
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        fila= tabla.getSelectedRow();
+        System.out.println(fila);
+    }//GEN-LAST:event_tablaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -299,6 +328,7 @@ public class interfazAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton cmdBorrar;
     private javax.swing.JLabel etiAno;
     private javax.swing.JLabel etiApellido;
     private javax.swing.JLabel etiCurso;
