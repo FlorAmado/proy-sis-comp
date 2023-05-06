@@ -73,6 +73,7 @@ public class interfazAlumno extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         cmdBorrar = new javax.swing.JButton();
+        cmdBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +127,13 @@ public class interfazAlumno extends javax.swing.JFrame {
             }
         });
 
+        cmdBuscar.setText("Buscar");
+        cmdBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,6 +145,8 @@ public class interfazAlumno extends javax.swing.JFrame {
                         .addComponent(btnAceptar)
                         .addGap(34, 34, 34)
                         .addComponent(cmdBorrar)
+                        .addGap(39, 39, 39)
+                        .addComponent(cmdBuscar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -231,7 +241,8 @@ public class interfazAlumno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
-                    .addComponent(cmdBorrar))
+                    .addComponent(cmdBorrar)
+                    .addComponent(cmdBuscar))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -291,6 +302,28 @@ public class interfazAlumno extends javax.swing.JFrame {
         System.out.println(fila);
     }//GEN-LAST:event_tablaMouseClicked
 
+    private void cmdBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarActionPerformed
+//        String mensaje = "TEXTO";
+//        String buscar = "TEX";
+//        
+//        
+//        //sensible a minus y mayus, si no coincide es false
+//        //metodo de la clase string q permite buscar en una cadena de caracteres
+//        System.out.println(mensaje.startsWith(buscar));
+//                
+        modelo.setRowCount(0);
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));    
+            Object[] objFila = {lista.get(i).getMatricula(), lista.get(i).getDni(), lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getDireccion(), lista.get(i).getEmail(), lista.get(i).getTelefono(), lista.get(i).getAno(), lista.get(i).getCurso(), lista.get(i).getEspecialidad()};
+          
+            //si encuentra las primeras letras va a agregarlas
+            if(lista.get(i).getNombre().startsWith(txtNombre.getText())){
+            modelo.addRow(objFila);
+           }
+        }
+
+    }//GEN-LAST:event_cmdBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +362,7 @@ public class interfazAlumno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdBuscar;
     private javax.swing.JLabel etiAno;
     private javax.swing.JLabel etiApellido;
     private javax.swing.JLabel etiCurso;
