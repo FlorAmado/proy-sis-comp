@@ -52,3 +52,6 @@ Se utiliza cuando un caso de uso tiene una secuencia de acciones básicas que se
 Por ejemplo, el caso de uso "Crear cuenta" podría tener una extensión para solicitar información adicional del cliente, como su dirección o su número de teléfono. 
 
 La extensión se puede invocar sólo si se cumplen ciertas condiciones especificadas en el caso de uso principal, por ejemplo, si el cliente desea proporcionar información adicional.
+
+
+![DIAGRAMA](https://github.com/FlorAmado/proy-sist-comp-y-mod-sist/blob/master/modelos-y-sistemas/DIAGRAMA_estacion_de_servicio/diagram.png)
