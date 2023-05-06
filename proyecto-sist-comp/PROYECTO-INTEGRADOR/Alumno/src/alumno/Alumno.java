@@ -45,9 +45,9 @@ Documento readme.md donde se detalle el funcionamiento del sistema.
 public class Alumno {
 
     private String matricula;
+    private String dni;
     private String nombre;
     private String apellido;
-    private String dni;
     private String direccion;
     private String email;
     private String telefono;
@@ -58,7 +58,7 @@ public class Alumno {
     public Alumno() {
     }
 
-    public Alumno(String matricula, String nombre, String apellido, String dni, String direccion, String email, String telefono, String año, String curso, String especialidad) {
+    public Alumno(String matricula, String dni, String nombre , String apellido, String direccion, String email, String telefono, String ano, String curso, String especialidad) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -75,9 +75,9 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", direccion=" + direccion + ", email=" + email + ", telefono=" + telefono + ", ano=" + ano + ", curso=" + curso + ", especialidad=" + especialidad + '}';
-    }
+     return "Alumno{" + "matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", direccion=" + direccion + ", email=" + email + ", telefono=" + telefono + ", ano=" + ano + ", curso=" + curso + ", especialidad=" + especialidad + '}';
 
+    }
     public String getMatricula() {
         return matricula;
     }

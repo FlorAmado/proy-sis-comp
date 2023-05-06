@@ -6,17 +6,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class interfazAlumno extends javax.swing.JFrame {
 
-    /**
-     * Creates new form interfazAlumno
-     */
+    //variables GLOBALES
     
-    String[] columnNames = {"Matricula", "DNI", "Nombre", "Apellido", "Direccion", "Email", "Telefono", "Año", "Curso", "Especialidad"};
-    
-    int filas = 0;
-    
-    DefaultTableModel modelo;
-    
-    
+    DefaultTableModel modelo; 
+    String[] columnNames = {"Matricula", "DNI", "Nombre", "Apellido","Direccion", "Email", "Telefono", "Año", "Curso", "Especialidad"};
+    int filas = 0;    
+    List<Alumno> lista = new ArrayList<>();
+
+//* Creates new form interfazAlumno
+  
     
     public interfazAlumno() {
         initComponents();
@@ -84,6 +82,14 @@ public class interfazAlumno extends javax.swing.JFrame {
             }
         });
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(tabla);
 
@@ -197,28 +203,43 @@ public class interfazAlumno extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
+        
 //     1er CREAR LOS OBJ ALUMNOS  
        // Alumno a1 = new Alumno("1","2","3","4","5","6","7","8","9","10"); // no dinamico
        
-       Alumno a1 = new Alumno(txtNombre.getText(),)// dinamico
-        
+       Alumno a1 = new Alumno(txtMatricula.getText(),
+               txtDni.getText(), txtNombre.getText(),
+               txtApellido.getText(), txtDireccion.getText(),
+               txtEmail.getText(), txtTelefono.getText(),
+               txtAno.getText(), txtCurso.getText(), 
+               txtEspecialidad.getText());// dinamico
+
        // System.out.println(a1.toString());
         
 //     2DO CREAR UNA LISTA Y AGREGAR LOS OBJETOS ALUMNOS
-        List<Alumno> lista = new ArrayList<>();
+       
         
         lista.add(a1);
-        
+//        reset cantidad de filas
+
+        modelo.setRowCount(0);
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i));
+            
+//        3er CREAR UN ARRAY DE LOS OBJETOS            
+            Object[] objFila = {lista.get(i).getMatricula(), lista.get(i).getDni(), lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getDireccion(), lista.get(i).getEmail(), lista.get(i).getTelefono(), lista.get(i).getAno(), lista.get(i).getCurso(), lista.get(i).getEspecialidad()};
+//        4to AGREGAR LAS FILAS AL MODELO  
+            modelo.addRow(objFila);
+            
         }
+        
+        
 
-//        3er REAR UN ARRAY DE LOS OBJETOS
 
-    Object[] objFila1 = {lista.get(0).getMatricula(), lista.get(0).getDNI(), lista.get(0).getNombre(),lista.get(0).getApellido(), lista.get(0).getDireccion(), lista.get(0).getEmail(), lista.get(0).getTelefono(), lista.get(0).getAno(), lista.get(0).getCurso(), lista.get(0).getEspecialidad()};
-       
-//        4to AGREGAR LAS FILAS AL MODELO     
-    modelo.addRow(objFila1);
+
+    
+        
+   
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
