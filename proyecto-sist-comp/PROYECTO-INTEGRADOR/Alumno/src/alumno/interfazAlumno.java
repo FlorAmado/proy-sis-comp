@@ -74,6 +74,7 @@ public class interfazAlumno extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         cmdBorrar = new javax.swing.JButton();
         cmdBuscar = new javax.swing.JButton();
+        cmdActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,7 +98,7 @@ public class interfazAlumno extends javax.swing.JFrame {
 
         etiEspecialidad.setText("Especialidad");
 
-        btnAceptar.setText("Aceptar");
+        btnAceptar.setText("Agregar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -134,6 +135,13 @@ public class interfazAlumno extends javax.swing.JFrame {
             }
         });
 
+        cmdActualizar.setText("Actualizar");
+        cmdActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,6 +155,8 @@ public class interfazAlumno extends javax.swing.JFrame {
                         .addComponent(cmdBorrar)
                         .addGap(39, 39, 39)
                         .addComponent(cmdBuscar)
+                        .addGap(33, 33, 33)
+                        .addComponent(cmdActualizar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -242,7 +252,8 @@ public class interfazAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(cmdBorrar)
-                    .addComponent(cmdBuscar))
+                    .addComponent(cmdBuscar)
+                    .addComponent(cmdActualizar))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -299,13 +310,24 @@ public class interfazAlumno extends javax.swing.JFrame {
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         fila= tabla.getSelectedRow();
-        System.out.println(fila);
+        
+        //pasar de obj a string con String.valueOf | .toString();
+        txtMatricula.setText(String.valueOf(modelo.getValueAt(fila, 0)));
+        txtDni.setText(String.valueOf(modelo.getValueAt(fila, 1)));
+        txtNombre.setText(String.valueOf(modelo.getValueAt(fila, 2)));
+        txtApellido.setText(String.valueOf(modelo.getValueAt(fila, 3)));
+        txtDireccion.setText(String.valueOf(modelo.getValueAt(fila, 4)));
+        txtEmail.setText(String.valueOf(modelo.getValueAt(fila, 5)));
+        txtTelefono.setText(String.valueOf(modelo.getValueAt(fila, 6)));
+        txtAno.setText(String.valueOf(modelo.getValueAt(fila, 7)));
+        txtCurso.setText(String.valueOf(modelo.getValueAt(fila, 8)));
+        txtEspecialidad.setText(String.valueOf(modelo.getValueAt(fila, 9)));
+//        System.out.println(fila);
     }//GEN-LAST:event_tablaMouseClicked
 
     private void cmdBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarActionPerformed
 //        String mensaje = "TEXTO";
 //        String buscar = "TEX";
-//        
 //        
 //        //sensible a minus y mayus, si no coincide es false
 //        //metodo de la clase string q permite buscar en una cadena de caracteres
@@ -320,9 +342,32 @@ public class interfazAlumno extends javax.swing.JFrame {
             if(lista.get(i).getNombre().startsWith(txtNombre.getText())){
             modelo.addRow(objFila);
            }
+            
         }
 
     }//GEN-LAST:event_cmdBuscarActionPerformed
+
+    private void cmdActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdActualizarActionPerformed
+        // TODO add your handling code here:
+        lista.get(fila).setMatricula(txtMatricula.getText());
+        lista.get(fila).setDni(txtDni.getText());
+        lista.get(fila).setNombre(txtNombre.getText());
+        lista.get(fila).setApellido(txtApellido.getText());
+        lista.get(fila).setDireccion(txtDireccion.getText());
+        lista.get(fila).setEmail(txtEmail.getText());
+        lista.get(fila).setTelefono(txtTelefono.getText());
+        lista.get(fila).setAno(txtAno.getText());
+        lista.get(fila).setCurso(txtCurso.getText());
+        lista.get(fila).setEspecialidad(txtEspecialidad.getText());
+
+         modelo.setRowCount(0);
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));    
+            Object[] objFila = {lista.get(i).getMatricula(), lista.get(i).getDni(), lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getDireccion(), lista.get(i).getEmail(), lista.get(i).getTelefono(), lista.get(i).getAno(), lista.get(i).getCurso(), lista.get(i).getEspecialidad()};
+            modelo.addRow(objFila);
+            
+        }
+    }//GEN-LAST:event_cmdActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,6 +406,7 @@ public class interfazAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton cmdActualizar;
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JLabel etiAno;
