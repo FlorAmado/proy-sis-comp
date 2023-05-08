@@ -1,47 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package alumno;
 
-/**
- *
- * Proyecto evaluativo
 
-Crear una aplidnicación que permita la administración de alumnos de una escuela
-La aplicación debe cumplir con los siguientes requisitos:
-
-- Interfaz grafica para la captura de datos:
-	-matricula
-	-dni
-	-nombre
-	-apellido
-	-direccion
-	-correo electronico
-	-telefono
-	-año
-	-curso
-	-especialidad
-
-- Interfaz grafica para la salida de la información (se debe mostrar en formato tabla - usar JTable)
-
-
-- Los métodos para la gestion deben ser los siguientes:
-	-Alta de alumno
-	-Baja de alumno
-	-Buscar alumno. Debe permitir la busqueda por apellido, matricula o dni
-	-Actualizar datos del alumno
-Cada método debe estar asociado a un boton de la interfaz gráfica.
-
-- Debe contar con un boton en la GUI donde muestre los datos del desarrollador (tu nombre, apellido y curso).
-
-
-- Se debe entregar
-link de github.
-Archivo .jar (ejecutable de java)
-Documento readme.md donde se detalle el funcionamiento del sistema.
-
- */
 public class Alumno {
 
     private String matricula;
@@ -162,7 +122,11 @@ public class Alumno {
     
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
         interfazAlumno ventana = new interfazAlumno();
         

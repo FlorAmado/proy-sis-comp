@@ -75,8 +75,10 @@ public class interfazAlumno extends javax.swing.JFrame {
         cmdBorrar = new javax.swing.JButton();
         cmdBuscar = new javax.swing.JButton();
         cmdActualizar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 51, 51));
 
         etiMatricula.setText("Matricula");
 
@@ -142,24 +144,19 @@ public class interfazAlumno extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel1.setText("Administracion de alumnos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(btnAceptar)
-                        .addGap(34, 34, 34)
-                        .addComponent(cmdBorrar)
-                        .addGap(39, 39, 39)
-                        .addComponent(cmdBuscar)
-                        .addGap(33, 33, 33)
-                        .addComponent(cmdActualizar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(etiCurso)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -196,16 +193,33 @@ public class interfazAlumno extends javax.swing.JFrame {
                                         .addComponent(etiMatricula))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                        .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))))
+                                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(174, 174, 174))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAceptar)
+                                .addGap(34, 34, 34)
+                                .addComponent(cmdBorrar)
+                                .addGap(39, 39, 39)
+                                .addComponent(cmdBuscar)
+                                .addGap(33, 33, 33)
+                                .addComponent(cmdActualizar)
+                                .addGap(178, 178, 178))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -254,7 +268,7 @@ public class interfazAlumno extends javax.swing.JFrame {
                     .addComponent(cmdBorrar)
                     .addComponent(cmdBuscar)
                     .addComponent(cmdActualizar))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -338,8 +352,8 @@ public class interfazAlumno extends javax.swing.JFrame {
             System.out.println(lista.get(i));    
             Object[] objFila = {lista.get(i).getMatricula(), lista.get(i).getDni(), lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getDireccion(), lista.get(i).getEmail(), lista.get(i).getTelefono(), lista.get(i).getAno(), lista.get(i).getCurso(), lista.get(i).getEspecialidad()};
           
-            //si encuentra las primeras letras va a agregarlas
-            if(lista.get(i).getNombre().startsWith(txtNombre.getText())){
+            //si encuentra los primeros cracteres va a agregarlos
+            if(lista.get(i).getDni().startsWith(txtDni.getText())){
             modelo.addRow(objFila);
            }
             
@@ -419,6 +433,7 @@ public class interfazAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel etiMatricula;
     private javax.swing.JLabel etiNombre;
     private javax.swing.JLabel etiTelefono;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtAno;
