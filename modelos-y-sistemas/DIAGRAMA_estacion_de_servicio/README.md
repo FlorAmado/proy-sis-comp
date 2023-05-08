@@ -53,5 +53,6 @@ Por ejemplo, el caso de uso "Crear cuenta" podría tener una extensión para sol
 
 La extensión se puede invocar sólo si se cumplen ciertas condiciones especificadas en el caso de uso principal, por ejemplo, si el cliente desea proporcionar información adicional.
 
+# DIAGRAMA COMPLETO
 
 ![DIAGRAMA](https://github.com/FlorAmado/proy-sist-comp-y-mod-sist/blob/master/modelos-y-sistemas/DIAGRAMA_estacion_de_servicio/diagram.png)
